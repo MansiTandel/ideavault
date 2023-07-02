@@ -1,6 +1,6 @@
 
 from django.forms import ModelForm
-from tkinter import Widget
+#from tkinter import Widget
 from pyexpat import model
 
 from django.contrib.auth.forms import UserCreationForm

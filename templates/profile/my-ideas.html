@@ -1,0 +1,80 @@
+{% load crispy_forms_tags %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title>IV | My Ideas</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1"/>
+
+<link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/morph/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+
+
+
+{% include 'base.html' %}
+
+{% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS  %}
+        <p id="message-timer" class = "alert alert-primary float-center text-center message-text">
+            <i class="fa fa-check" aria-hidden="true"></i>
+            &nbsp;
+            {{message}}
+        </p>
+            
+        {% endif %}
+{% endfor %}
+
+
+
+
+
+<body>
+   
+        {% for th in idea %}
+        <div class="container bg-white shadow-md p-5 form-layout" style="margin-top:20px;">
+
+        {{th.title}}
+        <br><br>
+
+        {{th.content}}
+        <br><br>
+
+        <a class="btn btn-outline-primary navbar-btn" type="button" href="{% url 'update-idea' th.id %}"> <i class="fa fa-plus" aria-hidden="true"></i> Update</a>
+        <br><br>
+
+        <a class="btn btn-outline-danger navbar-btn" type="button" href="{% url 'delete-idea' th.id %}">Delete</a>
+    </div>
+
+        {% endfor %}
+        <br>
+        
+</body>
+
+<script src="{% static 'js/app.js' %}"></script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"  crossorigin="anonymous"></script>
+
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+
+        crossorigin="anonymous">
+
+        </script>
+
+</html>
+
+
+
+
